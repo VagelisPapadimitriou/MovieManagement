@@ -4,6 +4,7 @@
     {
         Australia,
         Belarus,
+        China,
         Croatia,
         Cyprus,
         England,

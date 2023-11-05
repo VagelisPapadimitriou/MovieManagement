@@ -11,7 +11,7 @@ namespace MovieManagement
 
         public double Rating { get; set; }
 
-        public DateTime dateTime { get; set; }
+        public DateTime ProductionYear { get; set; }
 
         public int Duration { get; set; }
 
