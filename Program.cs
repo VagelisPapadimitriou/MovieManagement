@@ -10,7 +10,15 @@ namespace MovieManagement
     {
         static void Main(string[] args)
         {
-
+            MyDatabase db = new MyDatabase();
+            foreach (var movie in db.Movies)
+            {
+                Console.WriteLine(movie.Title);
+                foreach (var actor in movie.Actors)
+                {
+                    Console.WriteLine("\t" + actor.FirstName);
+                }
+            }
         }
     }
 
@@ -539,7 +547,7 @@ namespace MovieManagement
             List<Movie> movies = new List<Movie>() { m1, m2, m3, m4, m5, m6, m7, m8, m9, m10 };
             Movies.AddRange(movies);
 
-            List<Actor> actors = new List<Actor>() { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a14, a15, a16, a17, a18, a19, a20 };
+            List<Actor> actors = new List<Actor>() { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20 };
             Actors.AddRange(actors);
 
             List<Director> directors = new List<Director>() { d1, d2, d3, d4, d5, d6 };

@@ -21,7 +21,7 @@ namespace MovieManagement
 
         //Navigation Properties
 
-        public List<Actor> Actors { get; set; }
+        public List<Actor> Actors { get; set; } = new List<Actor>();
 
         public List<Genre> Genres { get; set; } = new List<Genre>();
 
