@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MovieManagement
 {
@@ -17,6 +18,12 @@ namespace MovieManagement
         public double Salary { get; set; }
 
         public int Age { get; set; }
+
+        public Country Country { get; set; }
+
+        //Navigation Properties
+
+        public List<Movie> Movies { get; set; }
     }
 
 }
