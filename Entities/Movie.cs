@@ -27,6 +27,12 @@ namespace MovieManagement
 
         public Director Director { get; set; } = new Director();
 
+        //Methods
+        public void Print()
+        {
+            Console.WriteLine($"{MovieId,-5}{Title,-25}{Country,-15}{Rating,-10}{ProductionYear.Year,-10}{Duration,-10}{Price,-10}");
+        }
+
     }
 
 }
