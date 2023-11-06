@@ -33,6 +33,11 @@ namespace MovieManagement
             Console.WriteLine($"{MovieId,-5}{Title,-25}{Country,-15}{Rating,-10}{ProductionYear.Year,-10}{Duration,-10}{Price,-10}");
         }
 
+        public void PrintTitle()
+        {
+            Console.WriteLine($"{Title,-25}");
+        }
+
     }
 
 }
