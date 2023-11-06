@@ -69,13 +69,15 @@ namespace MovieManagement
                     case "21": View.FilterMoviesByTitle(db.Movies, "Movies Filtered By Title"); break;
                     case "22": View.FilterActorsByFirstNameOrLastName(db.Actors, "Actors Filtered By FirstName or LastName"); break;
                     case "23": View.FilterDirectorsByFirstNameOrLastName(db.Directors, "Directors Filtered By FirstName or LastName"); break;
-                    default: Console.WriteLine("Wrong choice"); break;
+                    case "24": View.MoviesCount(db.Movies, "Movies Count"); break;
+                    case "25": View.ActorsCount(db.Actors, "Actors Count"); break;
+                    case "26": View.DirectorsCount(db.Directors, "Directors Count"); break;
+                    case "27": View.ActorsByCountry(db.Actors, "Actors By Country"); break;
+                    default: View.Error(); break;
                 }
 
 
             } while (input != "E" && input != "e");
-
-
 
         }
     }
@@ -94,7 +96,6 @@ namespace MovieManagement
                 movie.Print();
             }
         }
-
         public static void Actors(List<Actor> actors, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -107,7 +108,6 @@ namespace MovieManagement
                 actor.Print();
             }
         }
-
         public static void Directors(List<Director> directors, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -120,7 +120,6 @@ namespace MovieManagement
                 director.Print();
             }
         }
-
         public static void Countries(string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -134,7 +133,6 @@ namespace MovieManagement
                 Console.WriteLine($"{i,-5}{names[i],-25}");
             }
         }
-
         public static void MoviesPerDirector(List<Director> directors, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -152,7 +150,6 @@ namespace MovieManagement
                 }
             }
         }
-
         public static void DirectorsPerMovie(List<Movie> movies, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -168,7 +165,6 @@ namespace MovieManagement
 
             }
         }
-
         public static void MoviesPerActor(List<Actor> actors, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -186,7 +182,6 @@ namespace MovieManagement
                 }
             }
         }
-
         public static void ActorsPerMovie(List<Movie> movies, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -205,7 +200,6 @@ namespace MovieManagement
 
             }
         }
-
         public static void ActorsPerCountry(List<Actor> actors, string message)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -218,7 +212,6 @@ namespace MovieManagement
                 actor.PrintNameAndCountry();
             }
         }
-
         public static void FilterMoviesByTitle(List<Movie> movies, string message)
         {
             Console.WriteLine("Give Your Title");
@@ -238,7 +231,6 @@ namespace MovieManagement
             }
 
         }
-
         public static void FilterActorsByFirstNameOrLastName(List<Actor> actors, string message)
         {
             Console.WriteLine("Give the FirstName");
@@ -264,7 +256,6 @@ namespace MovieManagement
                 View.Actors(filteredActors, message);
             }
         }
-
         public static void FilterDirectorsByFirstNameOrLastName(List<Director> directors, string message)
         {
             Console.WriteLine("Give the FirstName");
@@ -289,6 +280,52 @@ namespace MovieManagement
                 Console.Clear();
                 View.Directors(filteredDirectors, message);
             }
+        }
+        public static void MoviesCount(List<Movie> movies, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Number of Movies: {movies.Count()}");
+            Console.ResetColor();
+        }
+        public static void ActorsCount(List<Actor> actors, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Number of Actors: {actors.Count()}");
+            Console.ResetColor();
+        }
+        public static void DirectorsCount(List<Director> directors, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Number of Directors: {directors.Count()}");
+            Console.ResetColor();
+        }
+        public static void ActorsByCountry(List<Actor> actors, string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+            var groupedResult = from actor in actors
+                                group actor by actor.Country;
+
+            foreach (var item in groupedResult)
+            {
+                Console.WriteLine($"{item.Key,20}: {item.Count()}");
+            }
+            Console.ResetColor();
+        }
+
+        public static void Error()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Wrong Choice - Error 404");
+            Console.ResetColor();
         }
     }
 }
